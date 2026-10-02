@@ -1,4 +1,8 @@
 [book]
-title = "DFe Law Reference"
-authors = ["Daniel Higa"]
-language = "en"
+title = "MOC NF-e/NFC-e 7.0 – Visão Geral"
+authors = ["ENCAT (transcrição)"]
+language = "pt-BR"
+src = "src"
+
+[output.html]
+default-theme = "light"
