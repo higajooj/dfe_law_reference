@@ -217,3 +217,99 @@ A Tabela 2-5 apresenta as principais validações efetuadas no CCG, que poderão
 | Campo | Validação |
 |---|---|
 | GTIN | Dígito de Controle inválido |
+| Descrição do Produto | Descrição do Produto muito genérica ou que não permita a identificação adequada do produto. Exemplo: “A definir”, “Disponível”, “Não informado(a)”, etc. |
+| Inscrição do Dono da Marca no Cadastro da Receita Federal | CNPJ ou CPF inválido |
+| NCM | Não informado o código do NCM do produto, ou informado um NCM inexistente |
+| CEST | Se for o caso, não informado o código CEST para o produto, ou informado um CEST inexistente, ou informado código CEST incompatível com o NCM |
+| Código de Classificação Geral do Produto (GPC) | Não informado o código de Classificação Geral do Produto (Segmento, Família, Classe e Subclasse), ou informado código existente, ou incompatível. |
+| GTIN de nível inferior (vinculado ao GTIN-14) | Não informado GTIN contido para o GTIN-14 ou Dígito de Controle inválido. |
+
+<!-- p.23 -->
+## 2.2.10. Responsável Técnico
+
+Responsável Técnico (NT 2018.005) é a empresa desenvolvedora ou a empresa responsável tecnicamente pelo sistema (software) de emissão de NF-e/NFC-e utilizado pelo contribuinte emitente. Essa informação será utilizada pelas Administrações Tributárias, principalmente na identificação de uso indevido[^3] do ambiente de autorização, viabilizando eventual contato das SEFAZ com os responsáveis técnicos.
+
+Em caso de sistema emissão de NF-e de desenvolvimento próprio o responsável técnico é o próprio contribuinte.
+
+**Código de Segurança do Responsável Técnico – CSRT**
+
+A critério da UF, para os estados que exigem o credenciamento de software emissor de DF-e, poderá ser exigido um código de segurança para a empresa desenvolvedora do software, denominado Código de Segurança do Responsável Técnico – CSRT.
+
+O CSRT corresponde a um código de segurança alfanumérico (16 a 36 bytes) de conhecimento apenas da Secretaria da Fazenda da Unidade Federada do emitente e da empresa responsável pelo sistema emissor de DF-e.
+
+A fim de garantir maior segurança no processo de emissão da NF-e e NFC-e, foi incluído o campo “hashCSRT” no grupo de identificação do responsável técnico. Este hash é gerado a partir da concatenação do CSRT da empresa com a chave de acesso da NF-e/NFC-e. Desta forma será possível garantir a autoria do software emissor da NF-e/NFC-e, pois, somente a empresa desenvolvedora do software e o Fisco conhecem o valor válido do CSRT utilizado para a geração do “hashCSRT”. Deverá ser utilizado o algoritmo SHA-1 para a geração do hash.
+
+### 2.2.10.1. Fornecimento do CSRT
+
+O processo de fornecimento do CSRT para o Responsável Técnico será feito por meio de página web específica da Secretaria da Fazenda da UF de cada emissor. Por meio desta página, o Responsável Técnico deverá solicitar, consultar ou revogar o CSRT. A critério da UF, poderá o CSRT ser fornecido também por *Web Service*. Cada unidade federada que tenha a intenção de utilizar este código deverá publicar como os contribuintes nela estabelecidos deverão obtê-lo.
+
+<!-- p.24 -->
+Será possível solicitar somente cinco CSRT por UF. Todavia, se a empresa necessitar de um sexto CSRT deverá indicar, previamente, qual dos outros CSRT válidos deseja revogar, uma vez que a empresa desenvolvedora do software poderá ter simultaneamente, no máximo, 5 CSRT válidos.
+
+### 2.2.10.2. Geração do hashCSRT
+
+Os passos para a geração do “hashCSRT” estão descritos a seguir:
+
+Passo 1: Concatenar o CSRT com a chave de acesso da NF-e/NFC-e que está sendo emitida.  
+Passo 2: Aplicar o algoritmo SHA-1 sobre o resultado da concatenação do passo 1, resultando em um string de 20 bytes hexadecimais.  
+Passo 3: Converter o resultado do passo anterior para Base64, resultando em uma string de 28 caracteres  
+Passo 4: Montar o grupo de identificação da empresa desenvolvedora do software (tag: infRespTec), com a tag “idCSRT” o identificador do CSRT utilizado para a geração do hash e a tag “hashCSRT” o resultado do passo 3
+
+### 2.2.10.3. Exemplo do hashCSRT
+
+Considere a situação hipotética de emissão de uma NF-e, e os parâmetros a serem utilizado no cálculo do “hashCSRT” são:
+
+- Chave de Acesso: 41180678393592000146558900000006041028190697
+- CSRT: G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO
+- idCSRT: 01
+
+    - **Passo 1**: Concatenar o CSRT com a chave de acesso da NF-e/NFC-e que está sendo emitida.
+
+      Resultado: G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO41180678393592000146558900000006041028190697
+
+    - **Passo 2**: Aplicar o algoritmo SHA-1 sobre o resultado da concatenação do passo 1, gerando uma string de 40 caracteres em hexadecimal.
+
+      Resultado: 696bfa2de10ce17eaee3ea8123639867c82b8a0c
+
+    - **Passo 3**: Converter o resultado do passo anterior para Base64, resultando em uma string de 28 caracteres (20 bytes).
+
+      Resultado: aWv6LeEM4X6u4+qBI2OYZ8grigw=
+
+    - - **Passo 4**: Montar o grupo de identificação do responsável técnico (tag: infRespTec).
+
+      Resultado:
+
+      ```xml
+      <infRespTec>
+          <CNPJ>99999999999999</CNPJ>
+          <xContato>Nome do Contato</xContato>
+          <email>email@empresaficticia.com.br</email>
+          <fone>41999999999</fone>
+          <idCSRT>01</idCSRT>
+          <hashCSRT>aWv6LeEM4X6u4+qBI2OYZ8grigw=</hashCSRT>
+      </infRespTec>
+      ```
+
+## 2.2.11. cBenef
+
+O código de benefício fiscal (tag: cBenef), por tratar de situações particulares de cada unidade federada, tem sua definição também especificada pelas UF que o utilizam.
+
+<!-- p.25 -->
+Considerando a necessidade de atualizações constantes que virão durante e depois da COVID-19 as UF que utilizam essa tabela e respectivas Regras de Validação, disponibilizarão endereços eletrônicos em suas páginas contendo as respectivas tabelas para download, a partir da data de publicação dessa versão da NT 2019.001.
+
+### 2.2.11.1. Arquivo no Portal Nacional da NF-e contendo os endereços das tabelas de “cBenef x CST” das UF:
+
+Na área “Diversos” da aba “Documentos” no Portal Nacional da NF-e, consta o arquivo contendo os endereços onde estão disponibilizadas as Tabelas de “cBenef x CST” nos portais das Secretarias de Fazenda que implantaram o código de benefício fiscal.
+
+## 2.2.12. Cadastro Centralizado de Contribuintes (CCC)
+
+As SEFAZ mantêm um cadastrado centralizado de todos os contribuintes da sua UF, no qual é possível cadastrar não somente contribuintes pessoa jurídica, com seu CNPJ e a respectiva Inscrição Estadual, mas também contribuintes pessoa física, com seu CPF e a respectiva Inscrição Estadual.
+
+O CCC é utilizado para:
+
+- Verificação se a IE do destinatário existe na UF de destino (operação interestadual), se o contribuinte está habilitado e se o CNPJ informado está vinculado com a IE informada, para qualquer um dos ambientes de autorização (SEFAZ Autorizadora ou SEFAZ Virtual);
+- Idem para os ambientes de contingência (ambiente SVC e ambiente EPEC).
+
+Este cadastro do CCC é utilizado também como local único de informações sobre o contribuinte, inclusive para as informações de credenciamento para os emitentes Pessoa Física.
+
+[^3]: Item 4.3.8.
