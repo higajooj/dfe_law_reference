@@ -1,7 +1,5 @@
 # Summary
 
-[Convenções da transcrição](CONVENTIONS.md)
-
 # Manuais
 
 - [MOC 7.0 – Visão Geral](moc-nfe/index.md)

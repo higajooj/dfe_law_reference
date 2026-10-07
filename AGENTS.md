@@ -1,12 +1,8 @@
 # Convenções da transcrição
 
-Transcrição do **Manual de Orientação do Contribuinte (MOC) – Visão Geral, versão 7.00, novembro de 2020** (ENCAT) e da **Nota Técnica 2014.002, versão 1.40, julho de 2026**.
+Instruções para adicionar novos documentos ao livro.
 
-Fontes de verdade:
-
-- MOC: `notes/moc-nfe/moc.pdf` e páginas renderizadas `notes/moc-nfe/page-NNN.png`.
-- NT 2014.002: `notes/nt2014_002/nt-html.html`; consultar o PDF e as páginas PNG do mesmo diretório para resolver dúvidas de apresentação, leitura ou formatação, inclusive texto riscado.
-
+- A transcrição fica em `src/<documento>/`.
 - Texto transcrito literalmente em pt-BR, conferindo o conteúdo e a apresentação visual das fontes correspondentes.
 - `<!-- p.NN -->` marca o início da página NN do PDF original.
 - Texto ~~riscado~~ no original é mantido como `~~texto~~` seguido de um aviso `> **Revogado/Descontinuado:** …`. Texto sem marcação permanece conforme a fonte; não inferir revogação apenas pela idade do trecho ou por sua presença no histórico de versões.
