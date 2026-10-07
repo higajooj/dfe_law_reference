@@ -3,7 +3,6 @@
 
 ## 2.2.1. Inclusão dos campos
 
-<!-- p.4 -->
 Novos campos foram adicionados ao "Grupo YA. Informações de Pagamento”:
 
 - Os campos CNPJPag e UFPag são de preenchimento facultativo pelo emitente que deseja informar o CNPJ e UF do estabelecimento onde o pagamento foi processado/transacionado/recebido nos casos em que a emissão do documento fiscal ocorrer em estabelecimento distinto.

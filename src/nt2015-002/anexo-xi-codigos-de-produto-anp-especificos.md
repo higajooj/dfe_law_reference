@@ -183,7 +183,7 @@
 
 | Código ANP | Descrição do Produto |
 |---|---|
-| <!-- p.39 --> 210101001 | GÁS COMBUSTÍVEL |
+| 210101001 | GÁS COMBUSTÍVEL |
 | 210201001 | PROPANO |
 | 210201002 | PROPANO ESPECIAL |
 | 210201003 | PROPENO |

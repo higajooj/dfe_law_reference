@@ -16,6 +16,8 @@
 | 236 | Rejeição: Chave de Acesso com dígito verificador inválido |
 
 <!-- p.16 -->
+| Código | Motivos de não atendimento da solicitação |
+|---:|---|
 | 238 | Rejeição: Cabeçalho - Versão do arquivo XML superior a Versão vigente |
 | 239 | Rejeição: Cabeçalho - Versão do arquivo XML não suportada |
 | 252 | Rejeição: Ambiente informado diverge do Ambiente de recebimento |
