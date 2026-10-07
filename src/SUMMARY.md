@@ -49,3 +49,9 @@
   - [8.11. Códigos de Produto da ANP Específicos](moc-nfe/08-tabelas-e-codigos/8-11-anp.md)
   - [8.12. NCM Específicos](moc-nfe/08-tabelas-e-codigos/8-12-ncm.md)
 - [9. Sistemática de Cálculo em Operações Interestaduais (EC 87/2015)](moc-nfe/09-calculo-interestadual.md)
+
+# NT 2014.002 – Web Service de Distribuição de DF-e
+
+- [Histórico, resumo e distribuição por ator](nt2014-002/index.md)
+- [Web Service NFeDistribuicaoDFe](nt2014-002/web-service.md)
+- [Códigos de erro e exemplos XML](nt2014-002/validacoes-exemplos.md)
