@@ -1,0 +1,56 @@
+<!-- p.134 -->
+# 8.6. Identificador: Nomenclatura de Valor Aduaneiro e Estatística
+
+A Receita Federal definiu a codificação da "NVE – Nomenclatura de Valor Aduaneiro e Estatística", com o objetivo de identificar a mercadoria submetida a despacho aduaneiro de importação, para efeito de valoração aduaneira, e aprimorar os dados estatísticos de comércio exterior.
+
+Em julho de 2013 existiam 1.315 códigos NCM com detalhamento pelo NVE, totalizando 5.414 codificações NVE.
+
+## 8.6.1. Composição
+
+A NVE tem por base a codificação do NCM – Nomenclatura Comum do MERCOSUL, acrescida de atributos e suas especificações, identificados, respectivamente, por dois caracteres alfabéticos e quatro numéricos. A mesma codificação NVE tem significado diferente, conforme o NCM que está sendo detalhado.
+
+<!-- p.135 -->
+## 8.6.2. Validação Possível
+
+- Campo: Composto por 2 letras e 4 algarismos, com tamanho total de 6 posições
+- Tabela: Somente alguns códigos NCM possuem o detalhamento da NVE, conforme tabela publicada pela RFB
+
+## 8.6.3. Exemplo de Códigos NVE
+
+Exemplo de codificação para Camisa de Malha de Uso Masculino:  
+Tabela NCM:
+
+| 61.05 | Camisas de malha, de uso masculino. |
+|---|---|
+| 6105.10.00 | - De algodão |
+| 6105.20.00 | - De fibras sintéticas ou artificiais |
+| 6105.90.00 | - De outras matérias têxteis |
+
+Codificação NVE:
+
+```
+23.28. Posição 6105 Camisas de malha, de uso masculino.
+23.28.1. Subitem 61051000 -De algodão
+    Atributos e Especificações de Nível 'U'
+23.28.1.1. Atributo AA COMPOSIÇÃO
+    0001 - 100% Algodão
+    0002 - De 99% até 90% algodão
+    0003 - De 89% até 80% algodão
+    0004 - De 79% até 70% algodão
+    ...
+23.28.1.2. Atributo AB TAMANHO
+    0001 - Infanto-juvenil (até 32)
+    0002 - Adulto (superior a 32)
+23.28.1.3. Atributo AC MANGA
+    0001 - Sem
+    0002 - Curta (que não cubra o cotovelo)
+    0003 - Longa
+    0004 - 3/4
+    ...
+23.29. Subitem 61052000 -De fibras sintéticas ou artificiais
+    Atributos e Especificações de Nível 'U'
+23.29.1. Atributo AA COMPOSIÇÃO
+    0001 - 100% Poliéster
+    0004 - De 99% até 90% poliéster
+    0005 - De 89% até 80% poliéster
+```
