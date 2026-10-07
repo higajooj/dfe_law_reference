@@ -1,0 +1,6 @@
+<!-- p.3 -->
+# 2. Cancelamento por Substituição
+
+O Ajuste SINIEF 07/18, que alterou o ajuste 19/16, trouxe a seguinte redação: “**Cláusula décima quinta-A** Na hipótese prevista no inciso I da cláusula décima segunda, o emitente poderá solicitar o cancelamento da NFC-e, desde que tenha sido emitida uma outra NFC-e em contingência para acobertar a mesma operação, em prazo não superior a 168 horas, podendo ser reduzido a critério de cada unidade federada, contado do momento em que foi concedida a Autorização de Uso da NFC-e, de que trata o inciso I da cláusula oitava.”.
+
+Sendo assim, a partir dessa Nota Técnica será possível um contribuinte cancelar uma NFC-e que foi emitida em duplicidade. Esse tipo de situação pode acontecer quando um contribuinte emite uma NFC-e (NFC-e 1), porém, por algum motivo, não obtém resposta, ficando pendente de retorno, e em seguida emite outra NFC-e (NFC-2), normalmente em contingência, para acobertar a operação. Depois é verificado que a “NFC-e 1” também foi autorizada, e sendo assim temos duas NFC-e acobertando a mesma operação. Acontecendo isso, o contribuinte poderá solicitar o cancelamento, no prazo não superior a 168 horas, da NFC-e emitida em duplicidade e que não acobertou a operação (NFC-e 1), tendo que referenciar a NFC-e que substituiu (NFC-2) aquela que está sendo cancelada.

@@ -1,0 +1,11 @@
+<!-- p.16 -->
+# 4.4. Banco de Dados: Emitente
+
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+| … | | | | | | |
+| 1C17-38 | 55/65 | - Emitente não autorizado para emissão de NF-e/NFC-e ou em situação irregular perante o Fisco.<br><br>Observação: o aplicativo emissor de NFF garante que a solicitação de emissão da NF-e é realizada somente para contribuintes ativos; entretanto, como é possível que ocorra um atraso no envio do XML para o ambiente de autorização, nessa situação, de forma excepcional e transitória, poderá acontecer a autorização de uso de uma NF-e para um contribuinte que já não está mais ativo na UF (NT 2021.002) | Obrig. | 781 | Rej. | Rejeição: Emissor não habilitado para emissão da NF-e/NFC-e |
+| ~~1C17-40~~ | ~~55/65~~ | ~~- Emitente em situação irregular perante o Fisco<br><br>Observação: o aplicativo emissor de NFF garante que a solicitação de emissão da NF-e é realizada somente para contribuintes ativos; entretanto, como é possível que ocorra um atraso no envio do XML para o ambiente de autorização, nessa situação, de forma excepcional e transitória, poderá acontecer a autorização de uso de uma NF-e para um contribuinte que já não está mais ativo na UF (NT 2021.002)~~ | ~~Obrig.~~ | ~~301~~ | ~~Den.~~ | ~~Uso Denegado: Irregularidade fiscal do emitente~~ |
+| 1C17-50 | 55 | Se operação de saída interestadual (tpNF=1 e idDest=2) e operação com Consumidor Final (indFinal=1) e indIEDest=9:<br>• Acessar Cadastro Centralizado de Contribuinte (Chave: UF do Destinatário, CNPJ do Emitente, cSitCNPJ=10)<br>• ~~Denegar~~ Rejeitar a NF-e se for encontrado registro de bloqueio no CCC<br>Nota: Regra de Validação opcional por UF, conforme Ajuste SINIEF 33/19<br>Nota: Regra de Validação não aplicável pelas UFs não signatárias, conforme parágrafo 7º da Cláusula sexta, do Ajuste SINIEF 07/05.(NT 2020.005) | Obrig. | 307 | ~~Den.~~ Rej. | ~~Uso Denegado~~ Rejeição: Emitente bloqueado pela UF de destino, em operação com consumidor final |
+
+> **Revogado/Descontinuado:** RV 1C17-40 riscada no original (excluída, conforme item 2.3.2). Na RV 1C17-50, os termos “Denegar”, “Den.” e “Uso Denegado” estão riscados no original.

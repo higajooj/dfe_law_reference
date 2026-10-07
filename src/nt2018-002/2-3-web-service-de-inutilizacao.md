@@ -1,0 +1,6 @@
+<!-- p.4 -->
+# 2.3 Web Service de Inutilização
+
+| Campo-Seq | Modelo | Regra de Validação | Aplic. Msg Efeito | Descrição Erro |
+|---|---|---|---|---|
+|  | 55/65 | Inutilização enviada com mais de 20\* rejeições iguais:<br>- Contribuinte (CNPJ + IP) ficará com o WS de Inutilização recebendo a rejeição 656 por até 1 (uma)\* hora para todas as requisições.<br><br>Observação 1: Caso após o tempo de 1 (uma)\* hora o contribuinte envie novamente a mesma Inutilização e tenha a mesma rejeição, ele poderá voltar a receber a rejeição 656 por até 1 (uma)\* hora, e isso se repetirá até ele parar de enviar a Inutilização com a mesma rejeição.<br><br>Observação 2: A verificação do contribuinte para receber a rejeição 656 poderá ser feita em tempo de conexão pela identificação do CNPJ do certificado digital de transmissão mais o endereço IP (CNPJ + IP) ou pela identificação do CNPJ do emitente (emit/CNPJ).<br><br>Observação 3: A critério da UF, após 50\* bloqueios o contribuinte poderá receber a rejeição 656 permanentemente, até entrar em contato com a UF autorizadora.<br><br>(\*) Critérios preferenciais, parametrizáveis por ambiente autorizador. | Facult. 656 Rej. | Rejeição: Consumo indevido pelo aplicativo da empresa [det: Quantidade de rejeições encontradas: XXX, Inutilização: ID_INUT] |
