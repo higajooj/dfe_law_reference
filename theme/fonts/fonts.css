@@ -1,0 +1,37 @@
+/* Adwaita Sans and Geist Mono are under the SIL Open Font License 1.1. See LICENSE.txt */
+
+@font-face {
+  font-family: 'Adwaita Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Adwaita Sans'),
+       url('{{ resource "fonts/adwaita-sans.woff2" }}') format('woff2');
+}
+
+@font-face {
+  font-family: 'Adwaita Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Adwaita Sans Italic'),
+       url('{{ resource "fonts/adwaita-sans-italic.woff2" }}') format('woff2');
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Geist Mono'), local('GeistMono-Regular'),
+       url('{{ resource "fonts/geist-mono-regular.woff2" }}') format('woff2');
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Geist Mono Bold'), local('GeistMono-Bold'),
+       url('{{ resource "fonts/geist-mono-bold.woff2" }}') format('woff2');
+}

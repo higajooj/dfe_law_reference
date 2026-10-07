@@ -1,0 +1,17 @@
+:root {
+    --content-max-width: 1100px;
+    --mono-font: "Geist Mono", "Source Code Pro", Consolas, Menlo, "DejaVu Sans Mono", monospace, monospace;
+}
+
+html {
+    font-family: "Adwaita Sans", "Inter", system-ui, sans-serif;
+}
+
+/* denser tables so wide layouts need less horizontal scrolling */
+table {
+    font-size: 0.9em;
+}
+table td,
+table thead th {
+    padding: 4px 10px;
+}
