@@ -1,0 +1,12 @@
+<!-- p.4 -->
+# Introdução
+
+Este documento tem como objetivo apresentar as diretrizes técnicas relacionadas ao uso de um Provedor de Assinatura e Autorização de Documentos Fiscais Eletrônicos - PAA, em conformidade com as disposições do Ajuste SINIEF 9/22, que instituiu este modelo em âmbito nacional.
+
+O Ajuste SINIEF 9/22, celebrado pelo CONFAZ e pela Receita Federal do Brasil, estabelece o arcabouço legal e regulatório para a atuação do PAA, permitindo que a assinatura digital e a solicitação de autorização de documentos fiscais eletrônicos sejam realizadas por meio de um serviço intermediário devidamente habilitado, em nome do emissor do documento. A presente Nota Técnica detalha a implementação deste modelo, em consonância com as normas e os prazos definidos pelo Ajuste e suas posteriores alterações (como os Ajustes SINIEF 45/22, 55/22, 47/23 e 46/25).
+
+A proposta desse modelo é simplificar os processos envolvidos na emissão de documentos fiscais eletrônicos, reduzindo a complexidade técnica para contribuintes e sistemas emissores, ao mesmo tempo em que mantém os requisitos de segurança, integridade e validade jurídica das informações transmitidas. A utilização de provedores especializados, nos termos do Ajuste SINIEF 9/22, possibilita maior padronização, confiabilidade e eficiência na comunicação com os ambientes de autorização de DF-e, especialmente para públicos como o Microempreendedor Individual (MEI), o Produtor Rural e os optantes pelo Simples Nacional.
+
+De forma geral, o PAA atua como uma camada de apoio ao emissor, realizando as etapas de assinatura eletrônica e encaminhamento dos documentos para autorização, conforme as regras previamente estabelecidas no Ajuste SINIEF 9/22 e nos manuais técnicos (MOC e MOPAA). Esse modelo contribui para a modernização dos processos fiscais eletrônicos, favorecendo a automação, a escalabilidade das soluções e a melhoria da experiência dos usuários envolvidos.
+
+É importante salientar que o uso do Provedor de Assinatura e Autorização de Documentos Fiscais Eletrônicos não altera a responsabilidade legal e tributária do emitente em relação às informações constantes no documento fiscal eletrônico emitido, conforme preconiza o inciso III da cláusula quarta do Ajuste SINIEF 9/22. O PAA atua exclusivamente como intermediário técnico, prestando serviços de apoio à assinatura digital e ao encaminhamento do documento para autorização, não assumindo a autoria fiscal nem a responsabilidade pelo conteúdo, veracidade ou adequação tributária das informações declaradas pelo contribuinte.

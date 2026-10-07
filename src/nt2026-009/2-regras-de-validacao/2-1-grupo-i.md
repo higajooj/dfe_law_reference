@@ -1,0 +1,6 @@
+<!-- p.5 -->
+# 2.1. Grupo I. Produtos e Serviços da NF-e
+
+| Campo | Modelo | Regra de Validação | Aplic. | Msg | Descrição Erro |
+|---|---|---|---|---|---|
+| I08-140 | 55 | Para NF-e com as finalidades abaixo, somente serão aceitos CFOPs de devolução de mercadoria:<br>- Devolução de mercadoria (tag: finNFe = 4);<br>- ou Nota de Crédito (tag: finNFe=5) do tipo “03=Retorno por Recusa Total na Entrega ou Por Não Localização do Destinatário na Tentativa de Entrega” (tag: tpNFCredito=03);<br>- ou Nota de Crédito (tag: finNFe=5) do tipo “06=Retorno por Recusa Parcial na Entrega” (tag: tpNFCredito=06);<br><br>**Observação 1:** Vide relação de CFOP de devolução de mercadoria na tabela de apoio publicada no Portal da NF-e (Tabela CFOP, indDevol=1).<br><br>**Exceção 1:** Aceitar os CFOP 1.949 e 2.949. na devolução de venda. Para estes CFOP verificar a condição:<br>- Devolução de mercadoria (tag: finNFe = 4) (NT 2015.002);<br><br>**Exceção 2:** Aceitar os CFOP 5.949 e 6.949 na devolução simbólica de gás natural (NCM 27112100) nos termos do [Ajuste SINIEF nº 22/21](https://www.confaz.fazenda.gov.br/legislacao/ajustes/2021/aj22_21) (NT 2021.004). | Obrig. | 327 | Rejeição: CFOP inválido para Nota Fiscal de devolução ou de retorno de mercadoria [nItem: 999] |

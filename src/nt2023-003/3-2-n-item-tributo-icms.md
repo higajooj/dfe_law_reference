@@ -1,0 +1,20 @@
+<!-- p.7 -->
+# 3.2. N. Item / Tributo: ICMS
+
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+| N12-40 | 65 | NFC-e com CST=00, 20, 40, 41 ou 90 e - CFOP diferente de 5.101, 5.102, 5.103, 5.104, 5.115 (NT 2015.002)<br><br>**Observação 1:** Para a UF do RS e ES, poderá ser permitido o uso do CST 90 com o CFOP 5.949.<br>**Observação 2:** Para a UF do CE, poderá ser permitido o uso do CST 90 com o CFOP 5.403 ou 5.405.<br>**Observação 3:** Para a UF de SP e AM, poderá ser permitido o uso do CST 40 com o CFOP 5.949. | Obrig. | 382 | Rej. | Rejeição: CFOP não permitido para o CST informado [nItem:nnn] |
+
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+| N12a-40 | 65 | NFC-e com CSOSN=102, 103, 300, 400 ou 900 CFOP diferente de 5.101, 5.102, 5.103, 5.104, 5.115 (NT 2015.002)<br>**Observação 1:** Para a UF do RS e ES, poderá ser permitido o uso do CSOSN 900 com o CFOP 5.949.<br>**Observação 2:** Para a UF do CE, poderá ser permitido o uso do CST 90 com o CFOP 5.403 ou 5.405.<br>**Observação 3:** Para a UF de SP e AM, poderá ser permitido o uso do CSOSN 900 com CFOP 5.949. | Obrig. | 386 | Rej. | Rejeição: CFOP não permitido para o CSOSN informado [nItem: nnn] |
+
+<!-- p.8 -->
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+| N12-70 | 55 | Operação com Não Contribuinte (indIEDest=9) e CST difere da relação abaixo:<br>- 00-Tributada integralmente;<br>- 20-Com redução da Base de Cálculo;<br>- 40-Isenta;<br>- 41-Não tributada;<br>- 60-ICMS cobrado anteriormente por substituição tributária;<br>- 61-Tributação monofásica sobre combustíveis cobrada anteriormente;<br><br>**Exceção 1:** A regra de validação acima não se aplica para NF-e de entrada (tpNF=0-Entrada).<br>**Exceção 2:** A regra de validação acima não se aplica, para o CST=50 (Suspensão), nas operações com CFOP de Retorno de Mercadorias (Tabela CFOP, indRetor=1), nem nas operações com CFOP de Remessa de Mercadorias (Tabela CFOP, indRemes=1), e nem nas operações com CFOP 5.949 ou 6.949.<br>**Exceção 3:** A regra de validação acima não se aplica quando houver ao menos um item de venda de veículos novos (grupo “veicProd”).<br>**Exceção 4:** A regra de validação não se aplica, em produção, para Nota Fiscal com data de emissão anterior a 01/07/2016.<br>**Exceção 5:** A regra de validação não se aplica para o CST=30 (Isenta ou não tributada e com cobrança do ICMS por substituição tributária), em operação interestadual (idDest=2) com combustíveis (tag: comb) derivados de petróleo.<br>(código ANP diferente de: 820101001, 820101010, 810102001, 810102004, 810102002, 810102003, 810101002, 810101001, 810101003, 220101003, 220101004, 220101002, 220101001, 220101005, 220101006, 560101001).<br>**Exceção 6:** A regra de validação acima não se aplica, para os CST=50 (Suspensão) e 51 (Diferimento), nas operações de devolução (finNFe=4).<br>**Exceção 7:** A regra de validação acima não se aplica, para o CST=51 (Diferimento), nas operações com CFOP 5.123, 5.922, 6.123 e 6.922, nem nas operações internas (idDest=1) de retorno de Mercadoria depositada em depósito fechado ou armazém geral (CFOP 5.906 ou 5.907). | Obrig. | 508 | Rej. | Rejeição: CST incompatível na operação com Não Contribuinte [nItem: 999] |
+
+<!-- p.9 -->
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+|  |  | **Exceção 8:** A critério da UF a regra de validação não se aplica para o CST=10 (Tributada e com cobrança do ICMS por substituição tributária) em operação interna (idDest=1). (NT 2017.002 / NT 2015.003)<br>**Exceção 9:** A regra de validação não se aplica para o CST=30 (Isenta ou não tributada e com cobrança do ICMS por substituição tributária), em operação interestadual (idDest=2) na aquisição de energia elétrica em Ambiente de Contratação Livre (ACL) com NCM=27160000 (NT 2020.005).<br>**Observação:** Para a UF do CE, poderá ser permitido o uso do CST 90 com o CFOP 5.403 ou 5.405. | | | | |

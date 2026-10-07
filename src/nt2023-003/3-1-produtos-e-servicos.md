@@ -1,0 +1,6 @@
+<!-- p.6 -->
+# 3.1. Produtos e Serviços
+
+| Campo-Seq | Modelo | Regra de Validação | Aplic. | Msg | Efeito | Descrição Erro |
+|---|---|---|---|---|---|---|
+| I08-150 | 65 | NFC-e (mod=65) com CFOP inválido. Aceitar unicamente os CFOP:<br>-  5.101: Venda de produção do estabelecimento;<br>-  5.102: Venda de mercadoria de terceiros;<br>-  5.103: Venda de produção do estabelecimento efetuada fora do estabelecimento;<br>-  5.104: Venda de mercadoria adquirida ou recebida de terceiros, efetuada fora do estabelecimento;<br>-  5.115: Venda de mercadoria de terceiros, recebida anteriormente em consignação mercantil;<br>-  5.405: Venda de mercadoria de terceiros, sujeita a ST, como contribuinte substituído;<br>-  5.656: Venda de combustível ou lubrificante de terceiros, destinados a consumidor final;<br>-  5.667: Venda de combustível ou lubrificante a consumidor ou usuário final estabelecido em outra Unidade da Federação;<br>-  5.933: Prestação de serviço tributado pelo ISSQN (Nota Fiscal conjugada);<br>(NT 2013/005 v 1.20) (NT 2015.002)<br><br>**Observação:** Para a UF do RS e ES, poderá ser permitido o uso do CFOP 5.949 com CSOSN=900 ou CST=90.<br><br>**Observação:** Para a UF de SP e AM, poderá ser permitido o uso do CFOP 5.949 com CSOSN=900 ou CST=40. | Obrig. | 725 | Rej. | Rejeição: NFC-e com CFOP inválido[nItem:nnn] |
