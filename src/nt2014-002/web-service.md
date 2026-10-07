@@ -1,5 +1,69 @@
+# 3. Web Service – NFeDistribuicaoDFe
+
+**Distribui documentos e informações de interesse do ator da NF-e**
+
+```mermaid
+flowchart LR
+    A[Ator da NF-e<br/>Cliente] -->|Consulta DF-e de interesse<br/>Req.: nfeDistDFeInteresse| B[WS do Ambiente Nacional da NF-e<br/>Web Service NFeDistribuicaoDFe]
+    B -->|Distribui| C[Aplicação NF-e]
+    C -->|Retorno| A
+```
+
+*Figura – Fluxo do Web Service NFeDistribuicaoDFe. O ator envia uma consulta de DF-e de interesse ao serviço e recebe o retorno da aplicação NF-e.*
+
+**Função:** Serviço destinado à distribuição de informações resumidas e documentos fiscais eletrônicos de interesse de um ator, seja este uma pessoa física ou jurídica.
+
+**Processo:** síncrono
+
+**Método:** nfeDistDFeInteresse
+
+**Pacote de liberação de Schemas da NT:** PL_NFeDistDFe_102
+
+Este serviço permite que um ator da NF-e tenha acesso aos documentos fiscais eletrônicos (DF-e) e informações resumidas que não tenham sido gerados por ele e que sejam de seu interesse. Pode ser consumido por qualquer ator de NF-e, Pessoa Jurídica ou Pessoa Física, que possua um certificado digital de PJ ou PF.
+
+No caso de Pessoa Jurídica, a empresa será autenticada pelo CNPJ base (8 primeiros dígitos) e poderá realizar a consulta para qualquer CNPJ da empresa (14 dígitos), desde que o CNPJ base consultado seja o mesmo do certificado digital.
+
+Os documentos fiscais eletrônicos e informações resumidas estarão disponíveis para distribuição por até 90 dias após sua recepção pelo Ambiente Nacional da NF-e.
+
+Caso a consulta seja realizada pelo destinatário, o Ambiente Nacional irá verificar a existência de sua manifestação (“Ciência da Operação”, “Operação não Realizada” ou “Confirmação de Operação”). Em caso da existência da manifestação do destinatário, a NF-e será retornada para o destinatário. Caso contrário, será retornado apenas o resumo da NF-e. Com o resumo, o destinatário terá as informações necessárias para realizar a manifestação.
+
+<!-- p.5 -->
+Para transportador e terceiros, a NF-e estará disponível integralmente na consulta.
+
+A distribuição ocorrerá para os atores que desempenham papéis de emitente, destinatário, transportador e terceiros (informado na tag `autXML`), e englobará os documentos que estiverem com “SIM” na linha correspondente, conforme tabela abaixo:
+
+| Documentos | Emitente | Destinatário[^1] | Transportador[^2] | Terceiros[^3] | CNPJ de transportador informado em evento “Ator Interessado” |
+|---|---:|---:|---:|---:|---:|
+| NF-e | Não | Sim | Sim | Sim | Sim |
+| Evento de Cancelamento | Não | Sim | Sim | Sim | Sim |
+| Evento de Carta de Correção | Não | Sim | Sim | Sim | Sim |
+| Eventos de Manifestação do Destinatário | Sim | Não | Não | Sim | Não |
+| Eventos da Suframa (Vistoria/Internalização) | Sim | Sim | Não | Sim | Não |
+| EPEC | Não | Sim | Sim | Não | Sim |
+| Eventos de Pedido de Prorrogação de Prazo[^4] | Não | Sim | Não | Não | Não |
+| Eventos do Fisco em Resposta ao Pedido de Prorrogação[^5] | Sim | Sim | Não | Não | Não |
+| Evento de Averbação[^6] | Sim | Sim | Sim | Sim | Sim |
+| Resumo de NF-e | Não | Sim | Não | Não | Não |
+| Resumo de Eventos CT-e Autorizado/Cancelado | Sim | Sim | Sim | Sim | Sim |
+| Resumo de Eventos MDF-e Autorizado/Cancelado | Sim | Sim | Sim | Sim | Sim |
+| Resumo de Eventos de Registro de Passagem | Sim | Sim | Sim | Sim | Sim |
+| Evento de Comprovante de Entrega Autorizado/Cancelado propagado do CT-e[^7] | Sim | Sim | Sim | Sim | Sim |
+| Evento de Comprovante de entrega na NF-e e Cancelamento | Não | Sim | Sim | Sim | Não |
+| Evento de Insucesso da Entrega Autorizado/Cancelado propagado do CT-e | Sim | Sim | Sim | Sim | Sim |
+| Evento de Insucesso da entrega na NF-e e Cancelamento | Não | Sim | Sim | Sim | Não |
+
+[^1]: Os documentos fiscais e resumos de eventos estarão disponíveis somente se o destinatário se manifestar dando “Ciência da Operação”, “Operação não Realizada” ou “Confirmação de Operação” para a NF-e, exceto para o Evento de Cancelamento, que será disponibilizado mesmo sem a manifestação do destinatário. Antes da manifestação ficará disponível para o destinatário somente a estrutura XML de “Resumo de NF-e” e o cancelamento de NF-e.
+[^2]: A NF-e estará disponível somente para o transportador identificado no grupo X03 ou que tiver sido informado no evento “Ator Interessado na NF-e” (cod. 110150).
+[^3]: A NF-e estará disponível para terceiros somente cujo CNPJ ou CPF estiver informado na tag `autXML`.
+[^4]: Eventos de Pedido de Prorrogação de Prazo da NT 2015.001: EPP1 e EPP2 (Evento Pedido de Prorrogação 1º e 2º Prazo), ECPP1 e ECPP2 (Evento Cancelamento Pedido de Prorrogação 1º e 2º Prazo).
+[^5]: Eventos do Fisco em Resposta ao Pedido de Prorrogação de Prazo da NT 2015.001: EFPP1 e EFPP2 (Evento Fisco Resposta ao Pedido de Prorrogação 1º e 2º Prazo), EFCPP1 e EFCPP2 (Evento Fisco Resposta ao Cancelamento de Prorrogação 1º e 2º Prazo).
+[^6]: Os Eventos de Averbação serão distribuídos a partir da implantação do BT 2017/001 v1.0.
+[^7]: Os eventos de comprovante de entrega propagados do CT-e serão distribuídos a partir da implantação do BT 2019.001 v.1.10.
+
+**OBS:** A partir da versão 1.13 desta Nota Técnica, os eventos gerados pelo Fisco, que forem passíveis de distribuição conforme a tabela acima, serão distribuídos ao emitente independente de manifestação do destinatário, ainda que emitente e destinatário sejam iguais.
+
 <!-- p.6 -->
-# 3.1. Leiaute Mensagem de Entrada
+## 3.1. Leiaute Mensagem de Entrada
 
 **Entrada:** Estrutura XML com o pedido de distribuição de DF-e de interesse do ator  
 **Schema XML:** `distDFeInt_v9.99.xsd`
@@ -230,23 +294,23 @@ Caso o Web Service fique disponível em ocasião que o serviço estiver paralisa
 | H03 | CPF do interessado na distribuição inválido (DV ou zeros) | Obrig. | 490 | Rej. |
 | H04 | CNPJ do Certificado Digital utilizado na transmissão não tem o mesmo CNPJ base do CNPJ consultado | Obrig. | 593 | Rej. |
 | H05 | CPF do Certificado Digital utilizado na transmissão diferente do CPF consultado | Obrig. | 472 | Rej. |
-| H06[^1] | Número do NSU informado superior ao maior NSU disponível para consulta | Obrig. | 589 | Rej. |
-| H07[^2] | Chave de Acesso com dígito verificador inválido | Obrig. | 236 | Rej. |
-| H08[^2] | Chave de Acesso inválida (Código UF inválido) | Obrig. | 614 | Rej. |
-| H09[^2] | Chave de Acesso inválida (Ano < 06 ou Ano maior que Ano | Obrig. | 615 | Rej. |
-| H10[^2] | Chave de Acesso inválida (Mês =0 ou Mês > 12) | Obrig. | 616 | Rej. |
-| H11[^2] | Chave de Acesso inválida (CNPJ zerado ou dígito inválido) | Obrig. | 617 | Rej. |
-| H12[^2] | Chave de Acesso inválida (modelo diferente de 55) | Obrig. | 618 | Rej. |
-| H13[^2] | Chave de Acesso inválida (número NF = 0) | Obrig. | 619 | Rej. |
-| H14[^2] | NF-e inexistente para a chave de acesso informada | Obrig. | 217 | Rej. |
-| H15[^2] | Verificar se NF-e está no prazo de download, 90 dias da data de recebimento da NF-e no Ambiente Nacional | Obrig. | 632 | Rej. |
-| H16[^2] | Se CNPJ, verificar se o CNPJ do interessado na NF-e tem o mesmo CNPJ-Base informado no pedido.<br>Se CPF, verificar se o CPF é o mesmo do interessado. | Obrig. | 640 | Rej. |
-| H17[^2] | A NF-e não deve ser disponibilizada para o emitente da NF-e. Verificar se CNPJ do interessado na NF-e é o emitente. | Obrig. | 641 | Rej |
-| H18[^2] | NF-e Cancelada, arquivo NF-e indisponível para download | Obrig. | 653 | Rej. |
-| H19[^2] | NF-e Denegada, arquivo NF-e indisponível para download | Obrig. | 654 | Rej. |
+| H06[^rn1] | Número do NSU informado superior ao maior NSU disponível para consulta | Obrig. | 589 | Rej. |
+| H07[^rn2] | Chave de Acesso com dígito verificador inválido | Obrig. | 236 | Rej. |
+| H08[^rn2] | Chave de Acesso inválida (Código UF inválido) | Obrig. | 614 | Rej. |
+| H09[^rn2] | Chave de Acesso inválida (Ano < 06 ou Ano maior que Ano | Obrig. | 615 | Rej. |
+| H10[^rn2] | Chave de Acesso inválida (Mês =0 ou Mês > 12) | Obrig. | 616 | Rej. |
+| H11[^rn2] | Chave de Acesso inválida (CNPJ zerado ou dígito inválido) | Obrig. | 617 | Rej. |
+| H12[^rn2] | Chave de Acesso inválida (modelo diferente de 55) | Obrig. | 618 | Rej. |
+| H13[^rn2] | Chave de Acesso inválida (número NF = 0) | Obrig. | 619 | Rej. |
+| H14[^rn2] | NF-e inexistente para a chave de acesso informada | Obrig. | 217 | Rej. |
+| H15[^rn2] | Verificar se NF-e está no prazo de download, 90 dias da data de recebimento da NF-e no Ambiente Nacional | Obrig. | 632 | Rej. |
+| H16[^rn2] | Se CNPJ, verificar se o CNPJ do interessado na NF-e tem o mesmo CNPJ-Base informado no pedido.<br>Se CPF, verificar se o CPF é o mesmo do interessado. | Obrig. | 640 | Rej. |
+| H17[^rn2] | A NF-e não deve ser disponibilizada para o emitente da NF-e. Verificar se CNPJ do interessado na NF-e é o emitente. | Obrig. | 641 | Rej |
+| H18[^rn2] | NF-e Cancelada, arquivo NF-e indisponível para download | Obrig. | 653 | Rej. |
+| H19[^rn2] | NF-e Denegada, arquivo NF-e indisponível para download | Obrig. | 654 | Rej. |
 
-[^1]: Validação aplicada para os tipos de consulta `distNSU` e `consNSU`.
-[^2]: Validações aplicadas somente para o tipo de consulta `consChNFe`.
+[^rn1]: Validação aplicada para os tipos de consulta `distNSU` e `consNSU`.
+[^rn2]: Validações aplicadas somente para o tipo de consulta `consChNFe`.
 
 ## 3.11. Leiautes Resumidos
 
@@ -401,6 +465,6 @@ Será permitido um número limitado de consultas por chave de acesso ou NSU em u
 
 **Observação:** Em quaisquer dos três tipos de consulta, quando o usuário receber a mensagem 656 – consumo indevido, deve aguardar 1hora. Se retomar a consulta antes de completar 1 (uma) hora, o tempo é zerado e a contagem reiniciará até completar 1hora.
 
-### 3.12. Endereço dos Web Services
+## 3.12. Endereço dos Web Services
 
 Os endereços dos Web Services de Distribuição do Ambiente Nacional estão publicados no Portal Nacional da NF-e (http://www.nfe.fazenda.gov.br/portal), e no Portal de Homologação (http://hom.nfe.fazenda.gov.br/portal) no menu “Serviços” / “Relação de Serviços Web”.

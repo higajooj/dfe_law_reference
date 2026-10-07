@@ -16,3 +16,4 @@ Fontes de verdade:
   linhas de destaque (grupos/raiz) em **negrito**.
 - Figuras: `img/` com legenda; fluxos simples redesenhados em mermaid.
 - Cabeçalhos/rodapés de página são omitidos. Os índices (Sumário, Ilustrações, Tabelas, Schemas) são substituídos pelo `SUMMARY.md`.
+- Cada documento é uma única entrada de primeiro nível no `SUMMARY.md`, com um `index.md` de capa; os capítulos ficam aninhados sob ela e seus títulos trazem a numeração original do documento (faixas como `N–M.` quando a página cobre várias seções). Seções sem número no original permanecem sem número.

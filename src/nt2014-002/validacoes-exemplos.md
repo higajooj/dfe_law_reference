@@ -49,7 +49,7 @@
 
 **Obs.:** Recomendado a não utilização de caracteres especiais ou acentuação nos textos das mensagens de erro.
 
-## 5. Exemplos de requisições XML ao Web Service
+# 5. Exemplos de requisições XML ao Web Service
 
 **Exemplo 1: uso da tag “distNSU” em ambiente de homologação**
 
