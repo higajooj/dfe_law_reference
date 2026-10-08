@@ -1,4 +1,5 @@
 <!-- p.16 -->
+
 # 2.1. Objetivos do Projeto
 
 O Projeto NF-e teve como objetivo a implantação de um modelo nacional de documento fiscal eletrônico, identificado pelo modelo 55, visando a substituir a sistemática de emissão do documento fiscal em papel, no caso as notas fiscais modelos 1 e 1A, com validade jurídica garantida pela assinatura digital do emitente, simplificando as obrigações acessórias dos contribuintes e permitindo, ao mesmo tempo, o acompanhamento em tempo real das operações comerciais pelo Fisco.

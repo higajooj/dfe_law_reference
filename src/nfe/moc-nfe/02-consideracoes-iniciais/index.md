@@ -1,4 +1,5 @@
 <!-- p.16 -->
+
 # 2. Considerações Iniciais
 
 A Nota Fiscal Eletrônica (NF-e) e a Nota Fiscal de Consumidor Eletrônica (NFC-e) foram desenvolvidas de forma integrada, pelas Secretarias de Fazenda dos Estados e Secretaria da Receita Federal do Brasil, a partir da assinatura do Protocolo ENAT 03/2005 (27/08/2005), que atribui ao Encontro Nacional de Coordenadores e Administradores Tributários Estaduais (ENCAT) a coordenação e a responsabilidade pelo desenvolvimento e implantação do Projeto NF-e.

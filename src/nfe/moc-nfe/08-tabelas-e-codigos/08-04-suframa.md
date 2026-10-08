@@ -1,4 +1,5 @@
 <!-- p.132 -->
+
 # 8.4. Identificador: Inscrição SUFRAMA
 
 ## 8.4.1. Composição do Identificador de Inscrição SUFRAMA
@@ -18,7 +19,9 @@ Onde:
 - LL=Código da localidade da Unidade Administrativa da Suframa que habilitou a empresa, conforme exemplos abaixo:
   - 01=Manaus
   - 10=Boa Vista
+
 <!-- p.133 -->
+
   - 30=Porto Velho
 - D=Dígito Verificador
 
@@ -31,10 +34,11 @@ Onde:
 
 ## 8.4.3. Exemplo de Cálculo do Dígito Verificador do Identificador de Inscrição SUFRAMA
 
-| A. CÓDIGO SUFRAMA | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|---|
-| B. PESOS | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 |
-| C. PRODUTOS (A * B) | 9 | 16 | 21 | 24 | 25 | 24 | 21 | 16 |
+```text
+A. CÓDIGO SUFRAMA   1    2    3    4    5    6    7    8
+B. PESOS            9    8    7    6    5    4    3    2
+C. PRODUTOS (A * B) 9   16   21   24   25   24   21   16
+```
 
 - O somatório dos produtos é: 16 + 21 + 24 + 25 + 24 + 21 + 16 + 9 = 156
 - Dividindo o somatório por 11 teremos: 156 / 11 = 14, com resto valendo 2

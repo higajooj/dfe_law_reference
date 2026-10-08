@@ -1,4 +1,5 @@
 <!-- p.129 -->
+
 # 8.2. Tabela de Código de Município do IBGE
 
 A NF-e utiliza a codificação adotada pelo Instituto Brasileiro de Geografia e Estatística (IBGE) para representar o código de município. Este código é composto de 7 dígitos numéricos, com as duas primeiras representando a UF. Os códigos de município das capitais dos estados podem ser encontrados na Tabela 8-2. Os códigos dos demais municípios podem ser encontrados na página daquele Instituto na Internet (https://www.ibge.gov.br).
@@ -36,6 +37,7 @@ A NF-e utiliza a codificação adotada pelo Instituto Brasileiro de Geografia e 
 | Vitória | 3205309 | Espírito Santo | 32 |
 
 <!-- p.130 -->
+
 Informar o código 9999999 e o nome do município “EXTERIOR” para as operações que envolvam localidades do exterior.
 
 Quando a operação envolver regiões administrativas (Ex. Cidades-satélites do DF), deve ser considerado o município sede como localidade da operação.
@@ -60,33 +62,34 @@ Validação possível:
 - Número de ordem dentro da UF: não pode ser zero;
 - Dígito de Controle: módulo 10 (pesos 2 e 1)
 
-Obs 1: Considerar a soma dos algarismos no somatório dos produtos dos pesos. Ou seja, se o produto for superior a 9 os dois algarismos devem ser somados.  
+Obs 1: Considerar a soma dos algarismos no somatório dos produtos dos pesos. Ou seja, se o produto for superior a 9 os dois algarismos devem ser somados.
+
 Obs 2: Se o resto da divisão for zero, considerar o dígito verificador igual a zero.
 
 ## 8.2.2. Exemplo de Cálculo do Dígito de Controle do Código de Município
 
-Exemplo 1:  
-Código Município IBGE = 355030 D (Município de São Paulo)
+**Exemplo 1:** Código Município IBGE = 355030 D (Município de São Paulo)
 
-| A. CÓDIGO MUN | 3 | 5 | 5 | 0 | 3 | 0 |
-|---|---|---|---|---|---|---|
-| B. PESOS | 1 | 2 | 1 | 2 | 1 | 2 |
-| C. PONDERAÇÃO (A * B) | 3 | 10 | 5 | 0 | 3 | 0 |
-| D. SOMA ALGARISMOS | 3 | 1 | 5 | 0 | 3 | 0 |
+```text
+A. CÓDIGO MUN           3    5   5   0   3   0
+B. PESOS                1    2   1   2   1   2
+C. PONDERAÇÃO (A * B)   3   10   5   0   3   0
+D. SOMA ALGARISMOS      3    1   5   0   3   0
+```
 
 - O somatório da soma dos algarismos é: 3 + 1 + 5 + 0 + 3 + 0 = 12
 - Dividindo o somatório por 10 teremos: 12 / 10 = 1, com um resto valendo 2
 - O dígito verificador é: DV = 10 – (resto da divisão), portanto 10 – 2 = 8
 - Neste caso, o Dígito Verificador = 8
 
-Exemplo 2:  
-Código Município IBGE = 211130 D (Município de São Luís)
+**Exemplo 2:** Código Município IBGE = 211130 D (Município de São Luís)
 
-| A. CÓDIGO MUN | 2 | 1 | 1 | 1 | 3 | 0 |
-|---|---|---|---|---|---|---|
-| B. PESOS | 1 | 2 | 1 | 2 | 1 | 2 |
-| C. PONDERAÇÃO (A * B) | 2 | 2 | 1 | 2 | 3 | 0 |
-| D. SOMA ALGARISMOS | 2 | 2 | 1 | 2 | 3 | 0 |
+```text
+A. CÓDIGO MUN           2    1   1   1   3   0
+B. PESOS                1    2   1   2   1   2
+C. PONDERAÇÃO (A * B)   2    2   1   2   3   0
+D. SOMA ALGARISMOS      2    2   1   2   3   0
+```
 
 - O somatório da soma dos algarismos é: 2 + 2 + 1 + 2 + 3 + 0 = 10
 - Dividindo o somatório por 10 teremos: 10 / 10 = 1, com um resto valendo 0
@@ -94,6 +97,7 @@ Código Município IBGE = 211130 D (Município de São Luís)
 - Neste caso, o Dígito Verificador = 0
 
 <!-- p.131 -->
+
 O código de Município do IBGE dos seguintes Municípios na tabela do IBGE tem o dígito verificador inválido; para estes municípios deve ser usado o DV respectivo, em vez do calculado:
 
 - 4305871 – Coronel Barros/RS;

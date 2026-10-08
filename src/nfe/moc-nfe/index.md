@@ -1,6 +1,11 @@
+<!-- p.01 -->
+
 # MOC 7.0 – Visão Geral
 
-**Manual de Orientação do Contribuinte – Visão Geral**  
-**Versão 7.00 – novembro de 2020**
+**Sistema Nota Fiscal Eletrônica**
 
-ENCAT – Encontro Nacional de Coordenadores e Administradores Tributários Estaduais
+**Manual de Orientação do Contribuinte**
+
+Visão Geral
+
+**Versão 7.00 – Novembro de 2020**

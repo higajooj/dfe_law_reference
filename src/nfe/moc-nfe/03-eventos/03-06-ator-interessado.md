@@ -1,4 +1,5 @@
 <!-- p.48 -->
+
 # 3.6. Evento Ator Interessado na NF-e – Transportador
 
 Um dos grandes desafios do projeto Nota Fiscal Eletrônica é prover para os atores envolvidos nos processos da NF-e informações de seu interesse de forma eficiente e confiável.

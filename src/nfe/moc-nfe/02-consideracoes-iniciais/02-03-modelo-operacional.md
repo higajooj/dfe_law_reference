@@ -1,4 +1,5 @@
 <!-- p.25 -->
+
 # 2.3. Descrição Simplificada do Modelo Operacional da NF-e
 
 ## 2.3.1. Autorização de Uso
@@ -12,7 +13,9 @@ Após a Autorização de Uso, que transforma o documento eletrônico no Document
 Este mesmo arquivo da NF-e será ainda transmitido para:
 
 - a Receita Federal, que é o repositório nacional de todas as NF-e emitidas com modelo 55;
+
 <!-- p.26 -->
+
 - no caso de uma operação interestadual, a Secretaria de Fazenda Estadual de destino da operação; e,
 - quando aplicável, os Órgãos e Entidades da Administração Pública Federal Direta e Indireta que tenham atribuição legal de regulação, normatização, controle e fiscalização, tais como a SUFRAMA, por exemplo.
 
@@ -30,7 +33,7 @@ Como não existe precedência ou hierarquia nas modalidades de emissão da NF-e 
 
 O processo de emissão normal é a situação desejada e mais adequada para o emissor, pois é a situação em que todos os recursos necessários para a emissão da NF-e estão operacionais e a autorização de uso da NF-e é concedida normalmente pela SEFAZ.
 
-Nesta situação a emissão das NF-e é realizada normalmente, sendo que os respectivos documentos auxiliares somente podem ser gerados após o o contribuinte ter recebido a autorização de uso.
+Nesta situação a emissão das NF-e é realizada normalmente, sendo que os respectivos documentos auxiliares somente podem ser gerados após o contribuinte ter recebido a autorização de uso.
 
 ### 2.3.2.2. Contingência
 
@@ -39,6 +42,8 @@ A obtenção da autorização de uso da NF-e é um processo que envolve diversos
 A alta disponibilidade é uma das premissas básicas do sistema da NF-e e os sistemas de recepção de NF-e das UF foram construídos para funcionar em regime de 24x7. Contudo, existem diversos outros componentes do sistema que podem apresentar falhas e comprometer a disponibilidade dos serviços, exigindo alternativas de emissão da NF-e em contingência.
 
 As opções de contingência variam de acordo com o modelo do documento e estão detalhadas em manuais específicos:
+
+<!-- REVISAR p.26: a numeração dos anexos de contingência divergente do item 1 (p.16: Anexo III – NF-e e Anexo IV – NFC-e; aqui: Anexo IV – NF-e e Anexo V – NFC-e) -->
 
 - MOC – Anexo IV – Manual de Contingência NF-e
 - MOC – Anexo V – Manual de Contingência NFC-e
