@@ -8,7 +8,7 @@ src = "src"
 default-theme = "light"
 no-section-label = true
 additional-css = ["theme/custom.css"]
-additional-js = ["mermaid.min.js", "mermaid-init.js"]
+additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/catalog.js"]
 
 [output.html.fold]
 enable = true

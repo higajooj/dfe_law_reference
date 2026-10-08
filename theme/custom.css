@@ -15,3 +15,31 @@ table td,
 table thead th {
     padding: 4px 10px;
 }
+
+/* the sidebar lists only the document being read; the first item (Documentos)
+   stays as the way back to the catalog, which is the home page */
+.sidebar ol.chapter:has(.active) > li:not(:first-child):not(:has(.active)) {
+    display: none;
+}
+.sidebar ol.chapter:has(> li:not(:first-child) .active) > li:first-child a::before {
+    content: "← ";
+}
+
+/* document catalog on the home page */
+.doc-catalog-filter {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    font: inherit;
+    color: var(--searchbar-fg);
+    background-color: var(--searchbar-bg);
+    border: 1px solid var(--searchbar-border-color);
+    border-radius: 4px;
+}
+#doc-catalog ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+#doc-catalog li {
+    padding: 4px 0;
+}
