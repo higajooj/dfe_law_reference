@@ -1,0 +1,18 @@
+# Validação das Regras Específicas do Evento
+
+| # | Regra de Validação | Aplic. | cStat | Efeito | Mensagem |
+|---|---|---|---|---|---|
+| K01 | Verificar se o nSeqEvento é maior que o valor permitido (1 até 99) | Obrig. | 636 | Rej. | Rejeição: O número sequencial do evento é maior que o permitido |
+| K02 | Verificar se número do Protocolo informado difere do número do Protocolo do MDFe | Obrig. | 222 | Rej. | Rejeição: Protocolo de Autorização de Uso difere do cadastrado |
+| K03 | Verificar se MDFe já está cancelado. | Obrig. | 218 | Rej. | Rejeição: MDFe já está cancelado na base de dados da SEFAZ. [nProt:999999999999999][dhCanc: AAAA-MM-DDTHH:MM:SS TZD]. |
+| K04 | Verificar se o MDFe é do modal Rodoviário | Obrig. | 749 | Rej. | Rejeição: MDFe deve ser do modal rodoviário para o evento de Alteração do Pagamento de MDFe |
+| K05 | Se indicador de pagamento for a prazo (tag:indPag=1), o grupo de informações a prazo deve ser informado (grupo:infPrazo) | Obrig. | 724 | Rej. | Rejeição: Grupo de informações do pagamento a prazo deve ser informado |
+| K06 | Se indicador de pagamento for a vista (tag:indPag=0), o grupo de informações a prazo NÃO deve ser informado (grupo:infPrazo) | Obrig. | 729 | Rej. | Rejeição: Grupo de informações do pagamento a prazo não deve ser informado |
+| K07 | Se informado grupo de pagamento, rejeitar se CNPJ/CPF do responsável pelo pagamento estiver inválido | Obrig. | 727 | Rej. | Rejeição: CNPJ/CPF do responsável pelo pagamento do frete inválido |
+| K08 | Se informado grupo de pagamento, rejeitar se CNPJ do IPEF estiver inválido | Obrig. | 728 | Rej. | Rejeição: CNPJ da instituição de pagamento eletrônico do frete inválido |
+| K09 | O somatório dos componentes (tag: infPag/Comp/vComp) deve ser igual ao valor do contrato (tag: infPag/vContrato)<br>**Observação:** tolerar uma diferença de R$ 0,01 a mais ou a menos | Obrig. | 746 | Rej. | Rejeição: A soma dos componentes do pagamento deve ser igual ao valor do contrato |
+| K10 | Se o pagamento estiver informado com pagamento a prazo (tag: indPag=1):<br>O número da parcela deve ser informado com três algarismos, sequenciais e consecutivos entre as parcelas (ex: 001, 002, 003)<br>**Observação:** informar o número da parcela com problema [nParcela: 999] | Obrig. | 735 | Rej. | Rejeição: Número da parcela inválido [nParcela:999] |
+| K11 | Se o pagamento estiver informado com pagamento a prazo (tag: indPag=1):<br>Nenhuma parcela pode ser anterior a data de emissão do MDF-e<br>**Observação:** informar o número da parcela com problema [nParcela: 999] | Obrig. | 736 | Rej. | Rejeição: Data de vencimento da parcela menor que a data de emissão [nParcela:999] |
+| K12 | Se o pagamento estiver informado com pagamento a prazo (tag: indPag=1):<br>A data informada em cada parcela deve ser posterior a parcela anterior<br>**Observação:** informar o número da parcela com problema [nParcela: 999] | Obrig. | 737 | Rej. | Rejeição: Data de vencimento da parcela menor que a data da parcela anterior [nParcela: 999] |
+| K13 | Se o pagamento estiver informado com pagamento a prazo (tag: indPag=1):<br>O somatório do valor das parcelas (tag:<!-- p.14 --> vParcela) + valor do adiantamento (tag: vAdiant) não pode ser diferente do valor do Contrato (tag: vContrato)<br>**Observação:** tolerar uma diferença de R$ 0,01 a mais ou a menos | Obrig. | 738 | Rej. | Rejeição: Somatório do valor das parcelas diferente do valor do contrato |
+| K14 | Se o pagamento estiver informado com pagamento a vista (tag: indPag=0):<br>O valor do adiantamento não pode ser informado (tag: vAdiant) | Obrig. | 739 | Rej. | Rejeição: Valor do adiantamento não pode ser informado para pagamento a vista |
