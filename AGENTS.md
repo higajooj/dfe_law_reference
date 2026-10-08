@@ -2,6 +2,20 @@
 
 Instruções para adicionar novos documentos ao livro.
 
+## Fluxo de trabalho (para PDFs)
+
+- Primeiro converta cada arquivo PDF para HTML com `pdftohtml -c -s`.
+- Faça a transcrição com base apenas no HTML e nos arquivos de imagem gerados; recorra ao PDF original somente se for necessário ou em caso de dúvida.
+- Execute o trabalho em paralelo com agentes (um por documento).
+
+## Fluxo de trabalho (para DOCX)
+
+- Procedimento análogo ao dos PDFs: primeiro exporte cada arquivo DOCX para HTML (por exemplo, com `libreoffice --headless --convert-to html`), mantendo a estrutura geral do documento (títulos, listas, tabelas e imagens).
+- Faça a transcrição com base apenas no HTML e nos arquivos de imagem gerados; recorra ao DOCX original somente se for necessário ou em caso de dúvida.
+- Execute o trabalho em paralelo com agentes (um por documento).
+
+## Convenções
+
 - A transcrição fica em `src/<categoria>/<documento>/`, com uma pasta por tipo de documento fiscal (`nfe`, `cte`, `mdfe`, …).
 - No `SUMMARY.md`, os títulos de parte seguem `# <Categoria> · <Tipo>` (por exemplo `# NF-e/NFC-e · Notas Técnicas`); o catálogo da página inicial é gerado a partir deles. As notas técnicas são listadas da mais recente para a mais antiga.
 - Texto transcrito literalmente em pt-BR, conferindo o conteúdo e a apresentação visual das fontes correspondentes.
