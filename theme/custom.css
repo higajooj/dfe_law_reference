@@ -18,7 +18,7 @@ table thead th {
 
 /* the sidebar lists only the document being read; the first item (Documentos)
    stays as the way back to the catalog, which is the home page */
-.sidebar ol.chapter:has(.active) > li:not(:first-child):not(:has(.active)) {
+.sidebar ol.chapter:has(.active) > li:not(:first-child):not(.full-doc-toggle):not(:has(.active)) {
     display: none;
 }
 .sidebar ol.chapter:has(> li:not(:first-child) .active) > li:first-child a::before {
@@ -65,4 +65,30 @@ table thead th {
 }
 #doc-catalog li {
     padding: 4px 0;
+}
+
+/* whole-document view (theme/full-doc.js) */
+.sidebar .full-doc-toggle a {
+    display: block;
+    padding: 5px 0;
+    font-size: 0.9em;
+    color: var(--sidebar-active);
+}
+.full-doc .nav-wrapper,
+.full-doc .nav-wide-wrapper,
+.full-doc .sidebar .on-this-page {
+    display: none;
+}
+.full-doc-page + .full-doc-page {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid var(--table-border-color);
+}
+.full-doc-page {
+    scroll-margin-top: calc(var(--menu-bar-height) + 0.5em);
+}
+@media print {
+    .full-doc-page + .full-doc-page {
+        border-top: none;
+    }
 }
