@@ -26,6 +26,29 @@ table thead th {
 }
 
 /* document catalog on the home page */
+.doc-catalog-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.doc-catalog-tabs[hidden] {
+    display: none;
+}
+.doc-catalog-tabs button {
+    padding: 6px 14px;
+    font: inherit;
+    color: var(--fg);
+    background-color: transparent;
+    border: 1px solid var(--searchbar-border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.doc-catalog-tabs button[aria-selected="true"] {
+    color: var(--sidebar-active);
+    border-color: var(--sidebar-active);
+    font-weight: 600;
+}
 .doc-catalog-filter {
     width: 100%;
     box-sizing: border-box;

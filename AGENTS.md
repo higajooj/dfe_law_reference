@@ -2,7 +2,8 @@
 
 Instruções para adicionar novos documentos ao livro.
 
-- A transcrição fica em `src/<documento>/`.
+- A transcrição fica em `src/<categoria>/<documento>/`, com uma pasta por tipo de documento fiscal (`nfe`, `cte`, `mdfe`, …).
+- No `SUMMARY.md`, os títulos de parte seguem `# <Categoria> · <Tipo>` (por exemplo `# NF-e/NFC-e · Notas Técnicas`); o catálogo da página inicial é gerado a partir deles. As notas técnicas são listadas da mais recente para a mais antiga.
 - Texto transcrito literalmente em pt-BR, conferindo o conteúdo e a apresentação visual das fontes correspondentes.
 - `<!-- p.NN -->` marca o início da página NN do PDF original.
 - Texto ~~riscado~~ no original é mantido como `~~texto~~` seguido de um aviso `> **Revogado/Descontinuado:** …`. Texto sem marcação permanece conforme a fonte; não inferir revogação apenas pela idade do trecho ou por sua presença no histórico de versões.
