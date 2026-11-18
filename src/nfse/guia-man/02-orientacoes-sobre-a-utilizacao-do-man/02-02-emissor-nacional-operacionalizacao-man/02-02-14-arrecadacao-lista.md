@@ -1,0 +1,5 @@
+# 2.2.14 Arrecadação – Lista
+
+À medida que as apurações forem sendo concluídas, os documentos de arrecadação serão exibidos na etapa “Arrecadação”. Para isso basta acessar o menu “Apuração Nacional” e clicar em “Arrecadação”. Ou então clicar no ícone de acesso fácil redondo à direita, ao lado do ícone “Apuração”, no topo da tela de apurações. Ou ainda, clicar no botão azul “Avançar” próximo ao rodapé da tela de apurações. Será apresentada então uma lista contendo os documentos de arrecadação e alguns filtros de pesquisa, conforme imagem abaixo.
+
+Os filtros são semelhantes aos da tela de apurações, tendo como diferenças os campos “Vencimento – De”, “Vencimento – Até”, e “Situação do DNA”, que podem ser “A pagar”, “Aguardando confirmação de pagamento”, “Vencido”, “Cancelado” e “Pago”. Como as apurações podem estar agrupadas, podendo haver apurações de vários tipos ou municípios juntos no mesmo documento de arrecadação, foram removidos os filtros de “Tipo de apuração” e “Município de Incidência”. A lista de documentos de arrecadação também pode ser reordenada, bastando para isso clicar nos títulos das colunas, da mesma forma que a lista de apurações.

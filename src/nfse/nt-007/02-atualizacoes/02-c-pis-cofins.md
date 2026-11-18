@@ -1,0 +1,39 @@
+<!-- p.04 -->
+
+# 2.c PIS/COFINS
+
+Foi observada a necessidade de atualização do *layout* da NFS-e referente às informações de tributação federal, mais especificamente relacionadas ao PIS e à COFINS. Atualmente, na DPS do documento fiscal existem apenas dois campos responsáveis pela informação dos valores desses tributos: “vPis” e “vCofins”. Esses campos dizem respeito aos valores desses tributos devidos na operação, ou seja, valores de débitos de apuração própria. De maneira equivocada, muitos contribuintes utilizavam esses campos para que fossem informados os valores RETIDOS desses tributos.
+
+Esses equívocos acarretaram a diminuição indevida da Base de Cálculo do IBS e da CBS nesses documentos fiscais, uma vez que de acordo com o inciso V do § 2º do art. 12 da Lei Complementar nº 214, de 16 de janeiro de 2025, o valor desses tributos não deve compor essa base de cálculo. Dessa forma, houve a necessidade de atualização de campos de domínio e de regras do grupo “piscofins” em NFSe/infNFSe/DPS/infDPS/valores/trib/tribFed/. **Informa-se que essas atualizações, descritas abaixo, estarão disponíveis nos ambientes de Produção e Produção Restrita (homologação/testes) no dia 09 de fevereiro de 2026.**
+
+### Arredondamento e Tolerância de R$0,01 para “vPis” e “vCofins”
+
+Informa-se que, para fins de cálculo e regras relacionadas aos valores correspondentes ao PIS (“vPIS”) e à COFINS (“vCofins”), será adotado o método de arredondamento bancário (*half-even*), conforme prática amplamente utilizada em operações financeiras e contábeis. Adicionalmente, será aplicada tolerância máxima de arredondamento de R$ 0,01 (um centavo de real), admitindo-se variações dentro desse limite sem caracterização de divergência nos valores informados.
+
+<!-- p.05 -->
+
+### Código da Situação Tributária
+
+Atualização do domínio no campo “CST”.
+
+| Caminho no XML | Campo | Ele | Tipo | Ocor. | Tam. | Descrição/Observação |
+|---|---|---|---|---|---|---|
+| **NFSe/infNFSe/DPS/infDPS/valores/trib/tribFed/** | **piscofins** | **G** | **-** | **0-1** | **-** | **Grupo de informações dos tributos PIS/COFINS** |
+| NFSe/infNFSe/DPS/infDPS/valores/trib/tribFed/piscofins/ | CST | E | N | 1-1 | 2 | Código de Situação Tributária do PIS/COFINS (CST):<br><br>00 - Nenhum;<br>01 - Operação Tributável com Alíquota Básica;<br>02 - Operação Tributável com Alíquota Diferenciada;<br>03 - Operação Tributável com Alíquota por Unidade de Medida de Produto;<br>04 - Operação Tributável monofásica - Revenda a Alíquota Zero;<br>05 - Operação Tributável por Substituição Tributária;<br>06 - Operação Tributável a Alíquota Zero;<br>07 - Operação Isenta da Contribuição;<br>08 - Operação sem Incidência da Contribuição;<br>09 - Operação com Suspensão da Contribuição;<br>49 - Outras Operações de Saída;<br>50 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno;<br>51 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;<br>52 - Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação;<br>53 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;<br>54 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;<br>55 - Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação;<br>56 - Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;<br>60 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno;<br>61 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno;<br>62 - Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação;<br>63 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno;<br>64 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação;<br>65 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação;<br>66 - Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação;<br>67 - Crédito Presumido – Outras Operações;<br>70 - Operação de Aquisição sem Direito a Crédito;<br>71 - Operação de Aquisição com Isenção;<br>72 - Operação de Aquisição com Suspensão;<br>73 - Operação de Aquisição a Alíquota Zero;<br>74 - Operação de Aquisição sem Incidência da Contribuição;<br>75 - Operação de Aquisição por Substituição Tributária;<br>98 - Outras Operações de Entrada;<br>99 - Outras Operações. |
+
+> *No original, o domínio do campo `CST` está destacado em amarelo.*
+
+### Tipo de Retenção PIS/COFINS e CSLL
+
+Também foi alterado o domínio do campo “tpRetPisCofins”. Foram conservados os valores atuais aceitos para esse campo (1 e 2) e acrescentados os códigos 0 e 3 a 9. Cumpre esclarecer que os valores 1 e 2, atualmente vigentes e com destaque em vermelho abaixo, serão suprimidos do *schema* da NFS-e quando os grupos “IBSCBS” se tornarem obrigatórios para a autorização/recepção do documento fiscal. A manutenção desses códigos deve-se ao fato de que há a necessidade de uma <!-- p.06 -->transição gradual para que todos os municípios que compartilham seus documentos fiscais com o Ambiente de Dados Nacional (ADN) e todos os contribuintes que utilizam a API Sefin possam se adaptar, nos próximos meses, ao novo domínio que será aceito, qual seja: aquele que diz respeito às informações de retenção dos três tributos de contribuição social: CSLL (Contribuição Social sobre o Lucro Líquido), PIS e COFINS, ou seja, códigos 0 e 3 a 9.
+
+| Caminho no XML | Campo | Ele | Tipo | Ocor. | Tam. | Descrição/Observação |
+|---|---|---|---|---|---|---|
+| **NFSe/infNFSe/DPS/infDPS/valores/trib/tribFed/** | **piscofins** | **G** | **-** | **0-1** | **-** | **Grupo de informações dos tributos PIS/COFINS** |
+| NFSe/infNFSe/DPS/infDPS/valores/trib/tribFed/piscofins/ | tpRetPisCofins | E | N | 0-1 | 1 | Tipo de Retenção PIS/COFINS e CSLL<br><br>0 - PIS/COFINS/CSLL Não Retidos;<br><span style="color:red">1 - PIS/COFINS Retido;</span><br><span style="color:red">2 - PIS/COFINS Não Retido;</span><br>3 - PIS/COFINS/CSLL Retidos;<br>4 - PIS/COFINS Retidos, CSLL Não Retido;<br>5 - PIS Retido, COFINS/CSLL Não Retido;<br>6 - COFINS Retido, PIS/CSLL Não Retido;<br>7 - PIS Não Retido, COFINS/CSLL Retidos;<br>8 - PIS/COFINS Não Retidos, CSLL Retido;<br>9 - COFINS Não Retido, PIS/CSLL Retidos; |
+
+**Observação:** Em que pese o atual Anexo I com o *layout* da NFS-e prever quatro informações possíveis para o campo “tpRetPisCofins” (1 - PIS/COFINS Retido; 2 - PIS/COFINS Não Retido; 3 - PIS Retido/COFINS Não Retido e 4 - PIS Não Retido/COFINS Retido), atualmente no *schema* só são permitidos os tipos 1 e 2, os quais foram mantidos nessa versão (em vermelho, acima). **Reitera-se que esses tipos (1 e 2) serão suprimidos quando os grupos “IBSCBS” passarem a ser obrigatórios no documento fiscal.**
+
+### Valor Relativo às Retenções de Contribuições Sociais
+
+Se houver valores de retenções de PIS, de COFINS e/ou de CSLL, eles deverão ser SOMADOS e informados no campo **“vRetCSLL”** de acordo com o que foi informado no campo “tpRetPisCofins”. Importante mencionar que essa agregação no campo “vRetCSLL” dos valores retidos dessas três Contribuições Sociais não deve mudar a forma de prestação dessas informações na Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais (EFD-Reinf). Frisa-se, novamente, que os campos “vPis” e “vCofins” não devem ser utilizados para a informação dos valores RETIDOS desses respectivos tributos.
