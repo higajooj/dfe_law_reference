@@ -1,0 +1,28 @@
+<!-- p.06 -->
+
+# Criação do Grupo de informações da Multa e Juros no CTe (aplicável a CTe, CTeOS e CTeSimp)
+
+<mark>O novo grupo de informações deverá ser utilizado para lançar um CTe com multa e juros referente a um CTe emitido anteriormente. O CTe de multa e juros deverá apresentar os mesmos dados do CTe referenciado. A tributação do IBS e CBS deverá ser somente o complemento que representa a multa e o juros e o ICMS deverá ser declarado com CST 41.</mark>
+
+| # | Campo | Ele | Pai | Tipo | Ocor. | Tam. | Descrição/Observação |
+|---|---|---|---|---|---|---|---|
+| ... |  |  |  |  |  |  |  |
+| | **gMultaJuros** | **G** | **Ide** | **G** | **0-1** | **-** | **Grupo de informações de multa e juros** |
+| | chCTeRef | E | gMultaJuros | E | 1-1 | 44 | Chave de acesso do CTe de referenciado |
+
+**Validações da Multa e Juros**
+
+| Regra de Validação | Aplic. | cStat | Efeito | Mensagem |
+|---|---|---|---|---|
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>- O CST do ICMS informado deverá ser 41 (grupo ICMS45)</mark> | <mark>Obrig.</mark> | <mark>1072</mark> | <mark>Rej.</mark> | <mark>Rejeição: CTe de multa e juros não pode ser tributado pelo ICMS</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>- Validar chave de acesso do CTe Referenciado<br><br>Retornar a primeira chave inválida e o motivo da rejeição da Chave de Acesso: CNPJ zerado ou inválido, Ano < 2009 ou maior que atual, Mês inválido (0 ou > 12), Modelo diferente de 57/67, Número zerado, Tipo de emissão inválido, UF inválida ou DV inválido)<br>[chCTe: 99999999999999999999999999999999999999999999][Motivo: XXXXXXXXXXXX]<br><br>**Observação:** No CTeOS essa regra deve validar modelo 67, no CTe e CTe Simplificado deve validar modelo 57</mark> | <mark>Obrig.</mark> | <mark>1073</mark> | <mark>Rej.</mark> | <mark>Rejeição: Chave de acesso do CTe referenciado em Multa e Juros inválida</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>- Acessar BD CHAVES CTE (Chave: UF, CNPJ Emit, Modelo, Série, Nro):<br>&nbsp;&nbsp;&nbsp;- O CTe referenciado (chCTeRef) deve existir</mark> | <mark>Facult.</mark> | <mark>1074</mark> | <mark>Rej.</mark> | <mark>Rejeição: CTe referenciado em Multa e Juros inexistente na base de dados da SEFAZ<br>[chCTe: 99999999999999999999999999999999999999999999]</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>-Acessar BD CHAVES CTE (Chave: UF, CNPJ Emit, Modelo, Série, Nro):<br>&nbsp;&nbsp;&nbsp;- O CTe referenciado (chCTeRef) não pode existir com diferença de chave de acesso</mark> | <mark>Facult.</mark> | <mark>1075</mark> | <mark>Rej.</mark> | <mark>Rejeição: CTe referenciado em Multa e Juros existe com diferença de chave de acesso<br>[chCTe: 99999999999999999999999999999999999999999999]<br>[nProt:999999999999999][dhAut: AAAA-MM-DDTHH:MM:SS TZD]</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>-Acessar BD CHAVES CTE (Chave: UF, CNPJ Emit, Modelo, Série, Nro):<br>&nbsp;&nbsp;&nbsp;- O CTe referenciado (chCTeRef) não pode estar cancelados</mark> | <mark>Facult.</mark> | <mark>1076</mark> | <mark>Rej.</mark> | <mark>Rejeição: CTe referenciado em Multa e juros não pode estar cancelado</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>-Acessar BD CHAVES CTE (Chave: UF, CNPJ Emit, Modelo, Série, Nro):<br>&nbsp;&nbsp;&nbsp;- O CTe referenciado (chCTeRef) não pode estar substituído</mark> | <mark>Facult.</mark> | <mark>1077</mark> | <mark>Rej.</mark> | <mark>Rejeição: CTe referenciado em Multa e juros não pode estar substituído</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>O Emitente do CTe referenciado em multa e juros deve ser igual ao emitente do CTe de Multa e Juros</mark> | <mark>Obrig.</mark> | <mark>1078</mark> | <mark>Rej.</mark> | <mark>Rejeição: O emitente do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>O Tomador do CTe referenciado em multa e juros deve ser igual ao tomador do CTe de Multa e Juros<br><br>**Observação**: o indicador do tomador (toma/toma4) também deve ser o mesmo</mark> | <mark>Obrig.</mark> | <mark>1079</mark> | <mark>Rej.</mark> | <mark>Rejeição: O tomador do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> |
+| <!-- p.07 --><mark>Se informado grupo de Multa e Juros do CTe:<br>As UF de início e fim da prestação devem ser as mesmas do CTe de Multa e Juros e do CTe referenciado<br><br>**Observação**: Quando as UF´s estiverem informadas nos 2 CTe</mark> | <mark>Obrig.</mark> | <mark>1080</mark> | <mark>Rej.</mark> | <mark>Rejeição: Início e fim de prestação do CTe referenciado em Multa e Juros deve ser o mesmo do CTe de Multa e Juros</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>O CST e o cClassTrib do grupo IBSCBS deve ser o mesmo do CTe referenciado<br><br>**Observação**: Regra aplicável a CTe e CTeOS, para o CTe Simplificado não validar</mark> | <mark>Obrig.</mark> | <mark>1081</mark> | <mark>Rej.</mark> | <mark>Rejeição: Classificação tributária do CTe referenciado deve ser a mesma do CTe de Multa e Juros</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>O tipo de CTe do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> | <mark>Obrig.</mark> | <mark>1082</mark> | <mark>Rej.</mark> | <mark>Rejeição: Tipo de CTe do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> |
+| <mark>Se informado grupo de Multa e Juros do CTe:<br>O tipo de Serviço do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> | <mark>Obrig.</mark> | <mark>1083</mark> | <mark>Rej.</mark> | <mark>Rejeição: Tipo de Serviço do CTe referenciado deve ser o mesmo do CTe de Multa e Juros</mark> |
